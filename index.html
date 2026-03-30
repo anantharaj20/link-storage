@@ -1,0 +1,103 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkVault — Your Link Manager</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-mark">Av</div>
+      <div class="logo-name">Anish<span>Vault</span></div>
+    </div>
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="search" placeholder="Search links…" autocomplete="off">
+    </div>
+    <div class="header-actions">
+      <span class="count-badge" id="count-badge">0 links</span>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+  <div class="filter-bar" id="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="tag-filter active" data-tag="all">All</button>
+  </div>
+
+  <div class="section-label" id="section-label">All Links</div>
+
+  <div class="empty-state" id="empty-state">
+    <div class="empty-icon">🔗</div>
+    <h3>No links yet</h3>
+    <p>Hit the <strong style="color:var(--accent)">+</strong> button to save your first link.<br>It'll show up right here.</p>
+  </div>
+
+  <div id="cards-grid"></div>
+</main>
+
+<!-- FAB -->
+<button id="fab" title="Add link" aria-label="Add new link">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+  </svg>
+</button>
+
+<!-- MODAL BACKDROP -->
+<div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-heading">Add Link</h2>
+      <button class="modal-close" id="modal-close" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <form id="link-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="input-title">Title</label>
+        <input class="form-input" type="text" id="input-title" placeholder="e.g. GitHub Docs" autocomplete="off">
+        <div class="input-error" id="err-title">Please enter a title.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-url">URL</label>
+        <input class="form-input" type="text" id="input-url" placeholder="https://example.com" autocomplete="off">
+        <div class="input-error" id="err-url">Please enter a valid URL.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Tags <span style="color:var(--text-faint);font-weight:400;text-transform:none;letter-spacing:0">(optional, press Enter)</span></label>
+        <div class="tags-input-wrap" id="tags-wrap">
+          <input type="text" id="tag-input" placeholder="Add tag…" autocomplete="off" maxlength="20">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" id="btn-cancel">Cancel</button>
+        <button type="submit" class="btn-submit" id="btn-submit">Save Link</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+<script src="./script.js"></script>
+</body>
+</html>
